@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper,openany,oneside,AutoFakeBold,heading=true,fontset=adobe,zihao = -4,linespread = 1.25]{ctexbook}
+\documentclass[zihao=-4,a4paper,openany,oneside,AutoFakeBold]{ctexbook}
 
 \input{settings/thesis-setting}
 
@@ -13,25 +13,26 @@
 \frontmatter
 \input{cover/cover.tex}
 \clearpage
-\thispagestyle{empty}
-\phantom{s}
-\clearpage
+% \thispagestyle{empty}
+% \phantom{s}
+% \clearpage
 
-\includepdf{preface/tasklist.pdf} 
-\clearpage
+% \includepdf{preface/tasklist.pdf} 
+% \clearpage
 
-\thispagestyle{empty}
-\phantom{s}
-\clearpage
+% \thispagestyle{empty}
+% \phantom{s}
+% \clearpage
 
 \setcounter{page}{1}
+\pagenumbering{Roman}
 % 中文摘要
 \include{preface/c_abstract}
 % 英文摘要
 \include{preface/e_abstract}
 
-\phantomsection
-\addcontentsline{toc}{chapter}{目录}
+% \phantomsection
+% \addcontentsline{toc}{chapter}{目录}
 \tableofcontents
 \clearpage
 
@@ -42,14 +43,13 @@
 
 
 \clearpage
-\phantomsection
-\addcontentsline{toc}{chapter}{参考文献}
+% \phantomsection
+% \addcontentsline{toc}{chapter}{参考文献}
 \printbibliography[heading=bibliography,title=参考文献]
 
 \backmatter
-\input{appendix/appendix.tex}
 \input{appendix/acknowledgements.tex}
 \input{appendix/design-conclusion.tex}
-
+\input{appendix/appendix.tex}
 
 \end{document}

@@ -1,9 +1,9 @@
 \usepackage[backend=biber,style=gb7714-2015]{biblatex}
-\renewcommand\bibfont{\fontsize{10bp}{12bp}\selectfont}
-\setlength{\bibitemsep}{2bp}
-\setlength{\labelnumberwidth}{0.8cm}
-\setlength{\biblabelsep}{0.2cm}
-\setlength{\bibhang}{0cm}
+% \renewcommand\bibfont{\fontsize{10bp}{12bp}\selectfont}
+% \setlength{\bibitemsep}{2bp}
+% \setlength{\labelnumberwidth}{0.8cm}
+% \setlength{\biblabelsep}{0.2cm}
+% \setlength{\bibhang}{0cm}
 
 
 
@@ -14,23 +14,23 @@
 		number=\chinese{chapter},
 		numbering=true,
 		format = \centering\heiti\zihao{3},
-		beforeskip=15pt,
+		beforeskip=\baselineskip,
 		tocline=\CTEXifname{\protect\numberline{第\chinese{#1}章}}{}#2,
-		afterskip=20pt,
+		afterskip=\baselineskip,
 	},
 	section={
-		format=\zihao{-3},
-		titleformat+=\heiti,
-		numberformat+=\bfseries,
-		aftername=\hspace{5pt},
-	},
-	subsection={
 		format=\zihao{4},
 		titleformat+=\heiti,
-		numberformat+=\bfseries,
-		aftername=\hspace{5pt},
+		numberformat+=\heiti,
+		aftername=\hspace{0.25cm},
 	},
-	contentsname=目~录
+	subsection={
+		format=\zihao{-4},
+		titleformat+=\heiti,
+		numberformat+=\heiti,
+		aftername=\hspace{0.25cm},
+	},
+	contentsname={\bf 目~录}
 }
 
 %---------------------------------纸张大小设置---------------------------------%
@@ -38,9 +38,12 @@
 % 普通A4格式缩进
 % \geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
 % 论文标准缩进
-\geometry{left=1.25in,right=1.25in,top=1in,bottom=1.5in}
+\geometry{left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm}
 %------------------------------------------------------------------------------%
 \usepackage{titletoc}
+
+\usepackage{setspace}
+\setstretch{1.35416667}
 
 %----------------------------------必要库支持----------------------------------%
 \usepackage{xcolor}
@@ -91,9 +94,11 @@
 }
 %------------------------------------------------------------------------------%
 
+\setmainfont{Times New Roman}
 \setCJKfamilyfont{nwpu}[Path=settings/]{nwpuname}
 % 新建字体命令，统一前缀f(a.k.a font)
 \newcommand{\fNWPU}{\CJKfamily{nwpu}}
+\newcommand{\fTNR}{\fontfamily{Times New Roman}}
 
 \makeatletter
 \newcommand\coverunderline[2][4cm]{{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}}
@@ -103,7 +108,9 @@
 \usepackage{fancyref}
 %\addtolength{\headsep}{-0.1cm}          %页眉位置
 %\addtolength{\footskip}{-0.1cm}         %页脚位置
-\addtolength{\topmargin}{0.2cm}
+% \addtolength{\topmargin}{0.2cm}
+\setlength{\topmargin}{-1.04cm}
+\setlength{\headsep}{\baselineskip}
 \newcommand{\makeheadrule}{
 	\makebox[0pt][l]{\rule[.7\baselineskip]{\headwidth}{0.8pt}}
 	\vskip-.8\baselineskip
@@ -113,10 +120,10 @@
 	{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi\makeheadrule}}
 \pagestyle{fancyplain}
 \fancyhf{}
-\fancyfoot[C,C]{\zihao{5}-~\thepage~-}
+\fancyfoot[C,C]{\zihao{-5}\thepage}
 % 后续文字可以自行修改
 \chead{\zihao{3}\raisebox{0.04cm}%
-	{　\fNWPU 西北工业大学} \songti{{\textbf{本科毕业设计论文}　}}}
+	{　\fNWPU 西北工业大学} \songti{{\bf{本科毕业设计（论文）}　}}}
 %------------------------------------------------------------------------------%
 
 %\dottedcontents{section}[1.16cm]{}{1.8em}{5pt}
@@ -125,25 +132,25 @@
 
 \newcommand{\cptid}[1]{第\chinese{#1}章}
 
-\titlecontents{chapter}[0pt]{\heiti\vspace{0pt}}%
-{\contentsmargin{0pt}\heiti\makebox[0pt][l]{\thecontentslabel}\hspace{3.8em}}%
-{\contentsmargin{0pt}\heiti}%
-{\titlerule*[.4pc]{$\cdot$}\contentspage}[\vspace{0em}]
+\titlecontents{chapter}[0cm]{\songti\bf\zihao{-4}\vspace{.5\baselineskip}}%
+{\songti\contentslabel{0cm}\hspace{1.5cm}}%
+{}%
+{\titlerule*[.4pc]{$\cdot$}\fTNR{\contentspage}}
 
-\titlecontents{section}[0.5cm]{\songti\vspace{-1pt}}%
-{\contentsmargin{0pt}\songti\makebox[0pt][l]{{\thecontentslabel}}\hspace{1.8em}}%
-{\contentsmargin{0pt}\songti}%
-{\titlerule*[.4pc]{$\cdot$}\contentspage}[\vspace{0em}]
+\titlecontents{section}[0.8cm]{\songti\zihao{-4}}%
+{\fTNR\contentslabel{0cm}\hspace{0.7cm}}%
+{}%
+{\titlerule*[.4pc]{$\cdot$}\fTNR{\contentspage}}
 
-\titlecontents{subsection}[1.00cm]{\songti\vspace{-1pt}}%
-{\contentsmargin{0pt}\songti\makebox[0pt][l]{{\thecontentslabel}}\hspace{2.7em}}%
-{\contentsmargin{0pt}\songti}%
-{\titlerule*[.4pc]{$\cdot$}\contentspage}[\vspace{0em}]
+\titlecontents{subsection}[1.4cm]{\songti\zihao{-4}}%
+{\fTNR\contentslabel{0cm}\hspace{0.95cm}}%
+{}%
+{\titlerule*[.4pc]{$\cdot$}\fTNR{\contentspage}}
 
-\titlecontents{subsubsection}[1.5cm]{\songti\vspace{-1pt}}%
-{\contentsmargin{0pt}\songti\makebox[0pt][l]{{\thecontentslabel}}\hspace{3.4em}}%
-{\contentsmargin{0pt}\songti}%
-{\titlerule*[.4pc]{$\cdot$}\contentspage}[\vspace{0em}]
+\titlecontents{subsubsection}[2.0cm]{\songti\zihao{-4}}%
+{\fTNR\contentslabel{0cm}\hspace{1.2cm}}%
+{}%
+{\titlerule*[.4pc]{$\cdot$}\fTNR{\contentspage}}
 
 
 
