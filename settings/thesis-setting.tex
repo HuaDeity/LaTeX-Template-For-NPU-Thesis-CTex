@@ -51,6 +51,7 @@
 \usepackage{layouts}
 \usepackage{clrscode}
 \usepackage{gensymb}
+\usepackage{pdfsync}
 \usepackage[final]{pdfpages}
 %------------------------------------------------------------------------------%
 
@@ -65,6 +66,12 @@
 \usepackage{setspace}
 \captionsetup[table]{labelfont=bf,textfont=bf}
 \usepackage{adjustbox}
+\renewcommand{\thetable}{\thechapter{}-\arabic{table}}
+\renewcommand{\thefigure}{\thechapter{}-\arabic{figure}}
+\renewcommand{\theequation}{\thechapter{}-\arabic{equation}}
+\usepackage{caption}
+\captionsetup[figure]{font=small}
+\captionsetup[table]{font={small,bf}}
 %------------------------------------------------------------------------------%
 
 %---------------------------------添加列表控制---------------------------------%
